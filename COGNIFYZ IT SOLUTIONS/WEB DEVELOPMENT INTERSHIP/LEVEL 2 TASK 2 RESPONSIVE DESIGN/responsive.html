@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b18">
+    <meta name="description" content="A modern responsive website demonstrating CSS media queries and a mobile hamburger navigation menu.">
+    <title>Cognify | Responsive Design</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #080b18;
+            --surface: #12182c;
+            --surface-light: #19213a;
+            --cyan: #66eaff;
+            --purple: #b19aff;
+            --text: #f4f6ff;
+            --muted: #a5afca;
+            --border: rgba(255,255,255,.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(ellipse at 12% 0%, rgba(106,78,255,.19), transparent 35%),
+                radial-gradient(ellipse at 90% 42%, rgba(42,204,255,.09), transparent 33%),
+                var(--bg);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-wrap: break-word;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:focus-visible,
+        label:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 5px;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin-inline: auto;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8,11,24,.92);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            flex-shrink: 0;
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--cyan);
+        }
+
+        .nav-toggle {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .menu-button {
+            display: none;
+            width: 45px;
+            height: 45px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            flex-shrink: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .menu-button span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 5px;
+            transition: transform .25s ease, opacity .25s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: block;
+            color: var(--muted);
+            font-size: .9rem;
+            font-weight: 500;
+            transition: color .2s ease, background .2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links .nav-cta {
+            padding: 10px 16px;
+            border-radius: 10px;
+            background: var(--cyan);
+            color: #091321;
+            font-weight: 700;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: #a4f2ff;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+            align-items: center;
+            gap: clamp(28px,5vw,60px);
+            padding-block: clamp(55px,8vw,100px);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 22px;
+            padding: 8px 14px;
+            color: var(--cyan);
+            background: rgba(102,234,255,.07);
+            border: 1px solid rgba(102,234,255,.2);
+            border-radius: 50px;
+            font-size: .73rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--cyan);
+            box-shadow: 0 0 12px var(--cyan);
+        }
+
+        h1 {
+            max-width: 650px;
+            font-size: clamp(2.6rem,5.5vw,4.8rem);
+            line-height: 1.1;
+            letter-spacing: -.055em;
+        }
+
+        .gradient {
+            color: var(--cyan);
+            background: linear-gradient(100deg,var(--cyan),var(--purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            max-width: 540px;
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 20px;
+            border: 1px solid transparent;
+            border-radius: 11px;
+            font-size: .9rem;
+            font-weight: 700;
+            text-align: center;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .button-primary {
+            color: #091321;
+            background: var(--cyan);
+        }
+
+        .button-primary:hover {
+            background: #a4f2ff;
+        }
+
+        .button-secondary {
+            color: var(--text);
+            background: rgba(255,255,255,.03);
+            border-color: var(--border);
+        }
+
+        .button-secondary:hover {
+            border-color: var(--purple);
+        }
+
+        .hero-visual {
+            min-width: 0;
+            padding: 16px;
+            background: linear-gradient(145deg,rgba(29,39,70,.9),rgba(13,18,36,.9));
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(0,0,0,.23);
+        }
+
+        .hero-visual img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .visual-caption {
+            padding: 18px 5px 5px;
+        }
+
+        .visual-caption strong {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .visual-caption p {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: .85rem;
+        }
+
+        .section {
+            padding-block: clamp(55px,7vw,90px);
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin: 0 auto 42px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: clamp(1.9rem,4vw,2.8rem);
+            line-height: 1.2;
+            letter-spacing: -.04em;
+        }
+
+        .section-heading > p {
+            margin-top: 14px;
+            color: var(--muted);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 22px;
+        }
+
+        .feature-card {
+            min-width: 0;
+            padding: 28px;
+            background: linear-gradient(145deg,var(--surface),rgba(14,19,37,.96));
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102,234,255,.35);
+            box-shadow: 0 15px 35px rgba(0,0,0,.18);
+        }
+
+        .feature-icon {
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 21px;
+            background: rgba(102,234,255,.08);
+            border: 1px solid rgba(102,234,255,.15);
+            border-radius: 15px;
+            font-size: 1.45rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.12rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: .91rem;
+        }
+
+        .responsive-panel {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            align-items: center;
+            gap: 35px;
+            padding: clamp(22px,4vw,40px);
+            background: linear-gradient(120deg,rgba(102,234,255,.06),rgba(177,154,255,.08));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+        }
+
+        .responsive-panel p {
+            margin-top: 15px;
+            color: var(--muted);
+        }
+
+        .breakpoints {
+            display: grid;
+            gap: 12px;
+        }
+
+        .breakpoint {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(8,11,24,.55);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .breakpoint span {
+            color: var(--muted);
+            font-size: .86rem;
+        }
+
+        .breakpoint strong {
+            color: var(--cyan);
+            font-size: .86rem;
+            text-align: right;
+        }
+
+        footer {
+            padding: 25px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: .85rem;
+        }
+
+        footer span {
+            color: var(--cyan);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                gap: 18px;
+            }
+
+            .hero {
+                gap: 28px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .feature-card:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 700px) {
+            html {
+                scroll-padding-top: 75px;
+            }
+
+            .nav-inner {
+                min-height: 70px;
+                flex-wrap: wrap;
+                gap: 0;
+                padding-block: 12px;
+            }
+
+            .menu-button {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+                width: 100%;
+                padding-top: 14px;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 12px 14px;
+                border-radius: 9px;
+            }
+
+            .nav-links a:hover {
+                background: rgba(102,234,255,.07);
+            }
+
+            .nav-links .nav-cta {
+                text-align: center;
+            }
+
+            .nav-toggle:checked ~ .nav-links {
+                display: flex;
+            }
+
+            .nav-toggle:checked + .menu-button span:first-child {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .nav-toggle:checked + .menu-button span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle:checked + .menu-button span:last-child {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .hero {
+                grid-template-columns: minmax(0,1fr);
+                padding-block: 50px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-inline: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                width: 100%;
+                max-width: 560px;
+                margin-inline: auto;
+            }
+
+            .responsive-panel {
+                grid-template-columns: minmax(0,1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 91%;
+            }
+
+            h1 {
+                font-size: clamp(2.35rem,10.5vw,3rem);
+                letter-spacing: -.05em;
+            }
+
+            .eyebrow {
+                font-size: .65rem;
+                letter-spacing: .6px;
+            }
+
+            .hero-description {
+                font-size: .93rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .features {
+                grid-template-columns: minmax(0,1fr);
+                gap: 16px;
+            }
+
+            .feature-card:last-child {
+                grid-column: auto;
+            }
+
+            .feature-card {
+                padding: 23px;
+            }
+
+            .section-heading {
+                margin-bottom: 30px;
+            }
+
+            .breakpoint {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .breakpoint strong {
+                text-align: left;
+            }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding-block: 30px;
+                gap: 24px;
+            }
+
+            .hero-visual {
+                max-width: 390px;
+                margin-inline: auto;
+            }
+
+            .hero-visual img {
+                aspect-ratio: 16 / 9;
+                max-height: 180px;
+            }
+
+            .hero-actions {
+                margin-top: 18px;
+            }
+
+            .section {
+                padding-block: 35px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" style="width:100%;">
+        <nav class="container nav-inner" aria-label="Main navigation" style="max-width:1120px;">
+            <a class="logo" href="#home" style="text-decoration:none;">Cognify<span>.</span></a>
+
+            <input class="nav-toggle" type="checkbox" id="menu-toggle" aria-label="Toggle navigation menu">
+
+            <label class="menu-button" for="menu-toggle" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#responsive">Responsive Design</a></li>
+                <li><a class="nav-cta" href="#features">Explore More ↗</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container" id="home">
+            <div class="hero-content">
+                <div class="eyebrow">COGNIFY · LEVEL 2 · TASK 2</div>
+                <h1>One website.<br><span class="gradient">Every screen.</span></h1>
+                <p class="hero-description">
+                    Great design should work everywhere. Discover a responsive
+                    interface that adapts smoothly to phones, tablets, laptops,
+                    and desktop screens.
+                </p>
+                <div class="hero-actions">
+                    <a href="#features" class="button button-primary">Explore Features ↗</a>
+                    <a href="#responsive" class="button button-secondary">See Breakpoints</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85"
+                    alt="Laptop displaying a web development workspace"
+                    loading="eager">
+                <div class="visual-caption">
+                    <strong>Designed to adapt</strong>
+                    <p>Flexible layouts, readable text, and mobile-friendly navigation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="features">
+            <div class="section-heading">
+                <div class="eyebrow">RESPONSIVE BY DESIGN</div>
+                <h2>Small screens. <span class="gradient">Big possibilities.</span></h2>
+                <p>CSS media queries let the same webpage adjust its layout for different screen sizes.</p>
+            </div>
+
+            <div class="features">
+                <article class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Content stacks vertically, buttons become easier to tap, and the navigation collapses into a hamburger menu.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Flexible Layout</h3>
+                    <p>Grid columns and spacing adjust at defined breakpoints, making better use of available screen space.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Better Experience</h3>
+                    <p>Readable typography, adaptable images, and touch-friendly controls help make the interface comfortable to use.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section container" id="responsive">
+            <div class="responsive-panel">
+                <div>
+                    <div class="eyebrow">CSS MEDIA QUERIES</div>
+                    <h2>One layout, <span class="gradient">every orientation.</span></h2>
+                    <p>Resize your browser or rotate your device to see the hero, feature cards, and navigation adapt to available space.</p>
+                </div>
+
+                <div class="breakpoints">
+                    <div class="breakpoint">
+                        <span>Mobile devices</span>
+                        <strong>480px and below</strong>
+                    </div>
+                    <div class="breakpoint">
+                        <span>Tablet and small screens</span>
+                        <strong>700px and below</strong>
+                    </div>
+                    <div class="breakpoint">
+                        <span>Medium screens</span>
+                        <strong>900px and below</strong>
+                    </div>
+                    <div class="breakpoint">
+                        <span>Short landscape screens</span>
+                        <strong>500px height and below</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="width:100%;">
+        <div class="container">
+            Built with HTML5 and CSS3 · <span>Cognify Internship</span>
+        </div>
+    </footer>
+</body>
+</html>

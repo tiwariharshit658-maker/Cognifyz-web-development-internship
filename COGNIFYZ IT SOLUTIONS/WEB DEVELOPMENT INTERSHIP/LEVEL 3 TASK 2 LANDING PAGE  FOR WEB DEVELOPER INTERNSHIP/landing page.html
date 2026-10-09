@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Web Developer Internship Opportunities at Cognifyz Technologies. Build real-world skills, learn modern web technologies, and grow your career.">
+    <title>Web Developer Internship | Cognifyz Technologies</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #635bff;
+            --secondary: #8b5cf6;
+            --dark: #111827;
+            --muted: #64748b;
+            --light: #f8faff;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--dark);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button, a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #edf0f7;
+        }
+
+        nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta, .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 23px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+
+        .nav-cta:hover, .btn:hover {
+            background: #5148e5;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(99, 91, 255, 0.25);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 0;
+            font-size: 28px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero section */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0 95px;
+            background:
+                radial-gradient(ellipse at 90% 15%, #e7e5ff 0, transparent 35%),
+                radial-gradient(ellipse at 10% 90%, #e0f2fe 0, transparent 35%),
+                #fafaff;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 7px 14px;
+            background: #eeecff;
+            color: #5145d9;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 4.4vw, 59px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text {
+            max-width: 570px;
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #dce1ef;
+            color: var(--dark);
+        }
+
+        .btn-outline:hover {
+            background: #f0efff;
+            color: var(--primary);
+        }
+
+        .hero-note {
+            margin-top: 24px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-visual {
+            position: relative;
+            min-width: 0;
+        }
+
+        .code-card {
+            background: #151a2e;
+            color: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 28px 70px rgba(36, 36, 90, 0.2);
+            transform: rotate(1deg);
+        }
+
+        .code-top {
+            padding: 17px 22px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #20263d;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #fb7185; }
+        .dot-yellow { background: #fbbf24; }
+        .dot-green { background: #34d399; }
+
+        .code-label {
+            margin-left: auto;
+            font-size: 12px;
+            color: #a5b4fc;
+        }
+
+        .code-content {
+            padding: 32px 25px 36px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            line-height: 2.2;
+            overflow-wrap: anywhere;
+        }
+
+        .code-purple { color: #c4b5fd; }
+        .code-blue { color: #7dd3fc; }
+        .code-green { color: #86efac; }
+        .code-orange { color: #fdba74; }
+
+        .floating-card {
+            position: absolute;
+            right: -20px;
+            bottom: -25px;
+            background: white;
+            padding: 17px 22px;
+            border-radius: 13px;
+            box-shadow: 0 12px 35px #1e293b20;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .floating-card span {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--muted);
+        }
+
+        /* Quick information */
+        .quick-info {
+            border-bottom: 1px solid #edf0f7;
+            padding: 27px 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .info-icon {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 47px;
+            height: 47px;
+            background: #efedff;
+            border-radius: 12px;
+            font-size: 22px;
+        }
+
+        .info-item strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .info-item small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* General sections */
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 690px;
+            margin: 0 auto 48px;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: clamp(28px, 3.2vw, 42px);
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .about-copy h2 {
+            margin-bottom: 20px;
+        }
+
+        .about-copy p {
+            color: var(--muted);
+            margin-bottom: 17px;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        .check-list li {
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .check-list li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 800;
+            margin-right: 12px;
+        }
+
+        .about-panel {
+            padding: 35px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, #f0efff, #f5faff);
+            border: 1px solid #e8e7ff;
+        }
+
+        .about-panel h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 17px 0;
+            border-bottom: 1px solid #deddf5;
+            font-size: 14px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: 0;
+        }
+
+        .detail-row span {
+            color: var(--muted);
+        }
+
+        .detail-row strong {
+            text-align: right;
+        }
+
+        /* Highlights */
+        .highlights {
+            background: var(--light);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 23px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 25px;
+            border: 1px solid #edf0f7;
+            border-radius: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 45px #1e293b0d;
+        }
+
+        .feature-icon {
+            display: grid;
+            place-items: center;
+            height: 55px;
+            width: 55px;
+            border-radius: 15px;
+            background: #eeecff;
+            font-size: 25px;
+            margin-bottom: 21px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .skills-copy p {
+            color: var(--muted);
+            margin-top: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            padding: 10px 16px;
+            background: #f0efff;
+            border: 1px solid #e2dfff;
+            color: #4f46c8;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: #e3e0ff;
+            transform: translateY(-2px);
+        }
+
+        .qualification-note {
+            margin-top: 25px;
+            padding: 18px;
+            border-left: 4px solid var(--primary);
+            background: #f8faff;
+            border-radius: 0 10px 10px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* CTA */
+        .apply-section {
+            padding: 25px 0 90px;
+        }
+
+        .apply-box {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 65px 35px;
+            border-radius: 24px;
+            background: linear-gradient(120deg, #5145e5, #8b5cf6);
+            color: white;
+        }
+
+        .apply-box h2 {
+            max-width: 700px;
+            margin: 0 auto 18px;
+        }
+
+        .apply-box p {
+            max-width: 650px;
+            margin: 0 auto 27px;
+            color: #eeecff;
+        }
+
+        .apply-box .btn {
+            background: white;
+            color: #5145e5;
+        }
+
+        .apply-box .btn:hover {
+            background: #f0efff;
+        }
+
+        .apply-note {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #eeecff;
+        }
+
+        /* Footer */
+        footer {
+            background: #101426;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr 1fr;
+            gap: 50px;
+            padding-bottom: 40px;
+        }
+
+        .footer-brand p {
+            max-width: 370px;
+            color: #a9b1c6;
+            font-size: 14px;
+            margin-top: 17px;
+        }
+
+        footer h3 {
+            font-size: 16px;
+            margin-bottom: 17px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #a9b1c6;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-top: 1px solid #293047;
+            padding-top: 20px;
+            color: #a9b1c6;
+            font-size: 12px;
+        }
+
+        .footer-bottom a {
+            color: #c4b5fd;
+        }
+
+        /* Entrance animation */
+        .reveal {
+            animation: fadeUp 0.8s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            .hero {
+                padding: 75px 0;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr 0.85fr;
+                gap: 30px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-cta {
+                padding: 11px 15px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+
+            .footer-grid {
+                gap: 28px;
+            }
+        }
+
+        /* Mobile navigation and layout */
+        @media (max-width: 680px) {
+            .container {
+                width: 91%;
+            }
+
+            nav {
+                min-height: 70px;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 5px 0 16px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 4px;
+                border-bottom: 1px solid #edf0f7;
+            }
+
+            .hero {
+                padding: 60px 0 70px;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 38px;
+            }
+
+            h1 {
+                font-size: clamp(34px, 9vw, 46px);
+                letter-spacing: -1.3px;
+            }
+
+            .hero-text {
+                font-size: 15px;
+            }
+
+            .hero-visual {
+                margin: 0 8px 10px 0;
+            }
+
+            .code-content {
+                padding: 22px 16px;
+                font-size: 12px;
+                line-height: 2;
+            }
+
+            .floating-card {
+                right: -5px;
+                bottom: -22px;
+                padding: 13px 15px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 19px;
+            }
+
+            .info-item {
+                justify-content: flex-start;
+            }
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .section-heading {
+                margin-bottom: 32px;
+            }
+
+            .section-heading p {
+                font-size: 14px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .feature-card {
+                padding: 25px 22px;
+            }
+
+            .about-panel {
+                padding: 25px 20px;
+            }
+
+            .detail-row {
+                font-size: 12px;
+            }
+
+            .apply-section {
+                padding: 10px 0 65px;
+            }
+
+            .apply-box {
+                padding: 48px 20px;
+                border-radius: 18px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            footer {
+                padding-top: 45px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .code-content {
+                font-size: 10px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .detail-row strong {
+                text-align: left;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo" aria-label="Cognifyz Technologies home">
+                Cognifyz<span>.</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#qualifications">Qualifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#apply" class="nav-cta">Apply Now ↗</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="reveal">
+                    <div class="eyebrow">Your career starts here</div>
+
+                    <h1>
+                        Web Developer Internship
+                        <span>Opportunities at Cognifyz Technologies</span>
+                    </h1>
+
+                    <p class="hero-text">
+                        Turn your passion for coding into practical skills.
+                        Explore web technologies, work on hands-on projects,
+                        and take your first steps toward a career in web development.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#apply" class="btn">Apply Now <span>→</span></a>
+                        <a href="#about" class="btn btn-outline">Learn More ↓</a>
+                    </div>
+
+                    <p class="hero-note">
+                        Build skills. Create projects. Grow with confidence.
+                    </p>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="code-card">
+                        <div class="code-top">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                            <span class="code-label">developer.html</span>
+                        </div>
+
+                        <div class="code-content">
+                            <div><span class="code-purple">&lt;html&gt;</span></div>
+                            <div>&nbsp;&nbsp;<span class="code-purple">&lt;body&gt;</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">&lt;h1&gt;</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">Future Developer</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">&lt;/h1&gt;</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-purple">&lt;p&gt;</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-orange">Learn. Build. Innovate.</span></div>
+                            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-purple">&lt;/p&gt;</span></div>
+                            <div>&nbsp;&nbsp;<span class="code-purple">&lt;/body&gt;</span></div>
+                            <div><span class="code-purple">&lt;/html&gt;</span></div>
+                        </div>
+                    </div>
+
+                    <div class="floating-card">
+                        ✨ Your next chapter
+                        <span>Starts with a single line of code.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-info">
+            <div class="container info-grid">
+                <div class="info-item">
+                    <div class="info-icon">💻</div>
+                    <div>
+                        <strong>Hands-on Learning</strong>
+                        <small>Practice through projects</small>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">🚀</div>
+                    <div>
+                        <strong>Career Development</strong>
+                        <small>Build your technical skills</small>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📅</div>
+                    <div>
+                        <strong>Flexible Learning Goals</strong>
+                        <small>Duration as per the official posting</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container about-grid">
+                <div class="about-copy">
+                    <div class="eyebrow">About the opportunity</div>
+                    <h2>Learn Today. Build for Tomorrow.</h2>
+
+                    <p>
+                        The Web Developer Internship landing page introduces
+                        an opportunity for aspiring developers to explore
+                        front-end and web development concepts through practical
+                        learning and project-based experience.
+                    </p>
+
+                    <p>
+                        Develop your understanding of website structure,
+                        styling, responsive layouts, and interactive features
+                        while strengthening your portfolio and problem-solving
+                        abilities.
+                    </p>
+
+                    <ul class="check-list">
+                        <li>Practice with real-world-style projects</li>
+                        <li>Strengthen your development fundamentals</li>
+                        <li>Learn professional coding practices</li>
+                        <li>Build projects to showcase your abilities</li>
+                    </ul>
+                </div>
+
+                <div class="about-panel">
+                    <h3>Internship Overview</h3>
+
+                    <div class="detail-row">
+                        <span>Organization</span>
+                        <strong>Cognifyz Technologies</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Role</span>
+                        <strong>Web Developer Intern</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Learning Areas</span>
+                        <strong>HTML, CSS, JavaScript</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Duration</span>
+                        <strong>As specified in the official posting</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Eligibility</span>
+                        <strong>Aspiring web developers</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section highlights" id="benefits">
+            <div class="container">
+                <div class="section-heading">
+                    <div class="eyebrow">Why this opportunity?</div>
+                    <h2>More Than Just Writing Code</h2>
+                    <p>
+                        Develop practical skills, explore new ideas, and
+                        prepare for the next step in your technology career.
+                    </p>
+                </div>
+
+                <div class="cards-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon">🛠️</div>
+                        <h3>Practical Experience</h3>
+                        <p>
+                            Apply your knowledge by building website layouts,
+                            interactive components, and responsive interfaces.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🧑‍🏫</div>
+                        <h3>Guidance & Mentorship</h3>
+                        <p>
+                            Learn from feedback and guidance where mentorship
+                            is included in the internship program.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">📂</div>
+                        <h3>Portfolio Development</h3>
+                        <p>
+                            Create demonstrable projects that help you present
+                            your technical abilities to future employers.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Technical Growth</h3>
+                        <p>
+                            Improve your understanding of front-end development
+                            and modern website-building techniques.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🧩</div>
+                        <h3>Problem-Solving Skills</h3>
+                        <p>
+                            Learn to break down requirements, debug issues,
+                            and build solutions step by step.
+                        </p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Career Preparation</h3>
+                        <p>
+                            Build confidence in discussing your projects,
+                            explaining your code, and learning independently.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="qualifications">
+            <div class="container skills-grid">
+                <div class="skills-copy">
+                    <div class="eyebrow">What you'll need</div>
+                    <h2>Skills & Qualifications</h2>
+
+                    <p>
+                        Candidates interested in web development should be
+                        curious, willing to learn, and comfortable practicing
+                        new technical concepts. Check the official internship
+                        announcement for its exact eligibility requirements.
+                    </p>
+
+                    <div class="qualification-note">
+                        <strong>Beginner-friendly approach:</strong>
+                        A willingness to learn, consistent practice, and
+                        interest in creating websites are great starting points.
+                        Any formal prerequisites depend on the official listing.
+                    </div>
+                </div>
+
+                <div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Responsive Design</span>
+                        <span class="skill-tag">Flexbox & Grid</span>
+                        <span class="skill-tag">DOM Manipulation</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">Debugging</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="apply-section" id="apply">
+            <div class="container">
+                <div class="apply-box">
+                    <h2>Ready to Begin Your Web Development Journey?</h2>
+
+                    <p>
+                        Take the next step, explore the available internship
+                        details, and discover how you can grow as a developer.
+                    </p>
+
+                    <a class="btn"
+                       href="https://cognifyz.com/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Explore Cognifyz Technologies ↗
+                    </a>
+
+                    <div class="apply-note">
+                        Verify current openings, eligibility, duration,
+                        and application instructions on the official website.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo" style="color: white;">
+                        Cognifyz<span>.</span>
+                    </a>
+
+                    <p>
+                        A landing page concept for presenting web development
+                        internship opportunities, technical learning areas,
+                        and application information.
+                    </p>
+                </div>
+
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Internship</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#qualifications">Qualifications</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Contact & Inquiries</h3>
+                    <ul class="footer-links">
+                        <li>
+                            Website:
+                            <a href="https://cognifyz.com/"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                Official Website ↗
+                            </a>
+                        </li>
+                        <li>
+                            support@cognifyz.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Cognifyz Technologies landing page concept.</p>
+                <a href="#home">Back to top ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu"
+            );
+
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+        });
+
+        document.querySelectorAll("#navLinks a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>

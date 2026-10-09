@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery and Slideshow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="margin: 0; font-family: Arial, sans-serif; background-color: #f2f5f9; text-align: center; color: #333;">
+
+    <!-- Header -->
+    <header style="background-color: #183153; color: white; padding: 25px 10px;">
+        <h1 style="margin: 0;">My Image Gallery</h1>
+        <p style="margin-bottom: 0;">Explore beautiful images and enjoy the slideshow</p>
+    </header>
+
+    <!-- Automatic Slideshow -->
+    <section style="padding: 25px 10px;">
+        <h2 style="color: #183153;">Automatic Image Slideshow</h2>
+        <p>Images change automatically every 3 seconds.</p>
+
+        <div style="width: 600px; max-width: 90%; height: 300px; position: relative; overflow: hidden; margin: 20px auto; border: 4px solid white; border-radius: 12px; box-shadow: 0 4px 12px #aaa;">
+
+            <img src="https://picsum.photos/id/1015/800/500"
+                 alt="Mountain landscape"
+                 style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: slideshow 9s infinite 0s;">
+
+            <img src="https://picsum.photos/id/1018/800/500"
+                 alt="Forest landscape"
+                 style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: slideshow 9s infinite 3s;">
+
+            <img src="https://picsum.photos/id/1025/800/500"
+                 alt="Dog"
+                 style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: slideshow 9s infinite 6s;">
+
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section style="padding: 25px 10px 40px; background-color: white;">
+        <h2 style="color: #183153;">Image Gallery</h2>
+        <p>Click any thumbnail to view the enlarged image.</p>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 15px;">
+
+            <a href="#mountain" style="display: inline-block;">
+                <img src="https://picsum.photos/id/1015/300/200"
+                     alt="Mountain"
+                     style="width: 200px; height: 140px; object-fit: cover; border-radius: 10px; box-shadow: 0 3px 8px #bbb; cursor: pointer; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.08)'"
+                     onmouseout="this.style.transform='scale(1)'">
+            </a>
+
+            <a href="#forest" style="display: inline-block;">
+                <img src="https://picsum.photos/id/1018/300/200"
+                     alt="Forest"
+                     style="width: 200px; height: 140px; object-fit: cover; border-radius: 10px; box-shadow: 0 3px 8px #bbb; cursor: pointer; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.08)'"
+                     onmouseout="this.style.transform='scale(1)'">
+            </a>
+
+            <a href="#dog" style="display: inline-block;">
+                <img src="https://picsum.photos/id/1025/300/200"
+                     alt="Dog"
+                     style="width: 200px; height: 140px; object-fit: cover; border-radius: 10px; box-shadow: 0 3px 8px #bbb; cursor: pointer; transition: transform 0.3s;"
+                     onmouseover="this.style.transform='scale(1.08)'"
+                     onmouseout="this.style.transform='scale(1)'">
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Enlarged Mountain Image -->
+    <div id="mountain"
+         style="display: none; position: fixed; inset: 0; z-index: 100; background-color: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;">
+
+        <a href="#" aria-label="Close enlarged image"
+           style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; text-decoration: none;">&times;</a>
+
+        <img src="https://picsum.photos/id/1015/1000/700"
+             alt="Enlarged mountain"
+             style="max-width: 90%; max-height: 85%; object-fit: contain; border: 4px solid white; border-radius: 8px;">
+    </div>
+
+    <!-- Enlarged Forest Image -->
+    <div id="forest"
+         style="display: none; position: fixed; inset: 0; z-index: 100; background-color: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;">
+
+        <a href="#" aria-label="Close enlarged image"
+           style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; text-decoration: none;">&times;</a>
+
+        <img src="https://picsum.photos/id/1018/1000/700"
+             alt="Enlarged forest"
+             style="max-width: 90%; max-height: 85%; object-fit: contain; border: 4px solid white; border-radius: 8px;">
+    </div>
+
+    <!-- Enlarged Dog Image -->
+    <div id="dog"
+         style="display: none; position: fixed; inset: 0; z-index: 100; background-color: rgba(0,0,0,0.9); align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;">
+
+        <a href="#" aria-label="Close enlarged image"
+           style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; text-decoration: none;">&times;</a>
+
+        <img src="https://picsum.photos/id/1025/1000/700"
+             alt="Enlarged dog"
+             style="max-width: 90%; max-height: 85%; object-fit: contain; border: 4px solid white; border-radius: 8px;">
+    </div>
+
+    <!-- Footer -->
+    <footer style="background-color: #183153; color: white; padding: 15px;">
+        <p style="margin: 0;">Image Gallery & Slideshow | Level 3 - Task 1</p>
+    </footer>
+
+    <!-- CSS for animations and enlarged image overlay -->
+    <style>
+        @keyframes slideshow {
+            0%   { opacity: 0; }
+            5%   { opacity: 1; }
+            30%  { opacity: 1; }
+            35%  { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        div:target {
+            display: flex !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 480px) {
+            #mountain img,
+            #forest img,
+            #dog img {
+                max-width: 95%;
+            }
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognify | JavaScript Playground</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #080b18;
+            --panel: #11162a;
+            --border: rgba(255,255,255,.09);
+            --text: #f4f6ff;
+            --muted: #9ca7c5;
+            --cyan: #55e6ff;
+            --purple: #a78bfa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(ellipse at 15% 0%, rgba(78, 75, 220, .22), transparent 40%),
+                radial-gradient(ellipse at 90% 45%, rgba(0, 204, 255, .10), transparent 35%),
+                var(--bg);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 11, 24, .8);
+            backdrop-filter: blur(16px);
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -.7px;
+        }
+
+        .logo span {
+            color: var(--cyan);
+        }
+
+        .nav-tag {
+            color: var(--muted);
+            font-size: .85rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 7px 14px;
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: auto;
+            padding: 75px 24px 40px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--cyan);
+            border: 1px solid rgba(85, 230, 255, .25);
+            background: rgba(85, 230, 255, .07);
+            border-radius: 50px;
+            padding: 7px 15px;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 6vw, 4.4rem);
+            line-height: 1.1;
+            letter-spacing: -2.5px;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            background: linear-gradient(100deg, var(--cyan), var(--purple));
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 610px;
+            margin: auto;
+            font-size: 1.02rem;
+        }
+
+        .workspace {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 25px 24px 80px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            background: linear-gradient(145deg, rgba(22, 29, 53, .96), rgba(13, 17, 34, .96));
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(85, 230, 255, .35);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .2);
+        }
+
+        .card.full {
+            grid-column: 1 / -1;
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        .icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            border-radius: 15px;
+            background: rgba(85, 230, 255, .09);
+            border: 1px solid rgba(85, 230, 255, .14);
+            font-size: 1.4rem;
+        }
+
+        .number {
+            color: var(--cyan);
+            font-size: .73rem;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            letter-spacing: -.3px;
+        }
+
+        .description {
+            color: var(--muted);
+            font-size: .91rem;
+            margin-bottom: 25px;
+        }
+
+        .demo-area {
+            min-height: 125px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 22px;
+            border: 1px dashed rgba(255, 255, 255, .13);
+            background: rgba(255, 255, 255, .018);
+            border-radius: 16px;
+        }
+
+        .primary-btn {
+            border: 0;
+            border-radius: 12px;
+            padding: 13px 21px;
+            color: #08101c;
+            background: var(--cyan);
+            font-weight: 700;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(85, 230, 255, .2);
+        }
+
+        .primary-btn:active {
+            transform: scale(.97);
+        }
+
+        .purple-btn {
+            background: var(--purple);
+        }
+
+        .purple-btn:hover {
+            box-shadow: 0 8px 24px rgba(167, 139, 250, .22);
+        }
+
+        .status {
+            color: var(--muted);
+            font-size: .82rem;
+            text-align: center;
+        }
+
+        .time-display {
+            color: var(--cyan);
+            font-size: 1.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: end;
+            gap: 14px;
+            width: 100%;
+        }
+
+        .field {
+            min-width: 0;
+        }
+
+        .field label {
+            display: block;
+            color: var(--muted);
+            font-size: .8rem;
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            width: 100%;
+            min-width: 0;
+            padding: 13px 14px;
+            color: var(--text);
+            background: #090d1d;
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 11px;
+            outline: none;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        .field input:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(85, 230, 255, .1);
+        }
+
+        .plus {
+            color: var(--cyan);
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding-bottom: 10px;
+        }
+
+        .calc-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result {
+            flex: 1;
+            min-width: 150px;
+            padding: 13px 17px;
+            border-radius: 12px;
+            background: rgba(167, 139, 250, .08);
+            border: 1px solid rgba(167, 139, 250, .18);
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .result strong {
+            color: var(--purple);
+            font-size: 1.15rem;
+            margin-left: 5px;
+            overflow-wrap: anywhere;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 25px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: .82rem;
+        }
+
+        .footer span {
+            color: var(--cyan);
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 17px 5%;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .workspace {
+                grid-template-columns: 1fr;
+                padding: 15px 16px 55px;
+                gap: 16px;
+            }
+
+            .card,
+            .card.full {
+                grid-column: auto;
+                padding: 23px 19px;
+            }
+
+            .calculator {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .plus {
+                display: none;
+            }
+
+            .calc-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .result {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+                animation-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Cognify<span>.</span></div>
+        <div class="nav-tag">Level 1 · Task 2</div>
+    </nav>
+
+    <header class="hero">
+        <div class="eyebrow">JAVASCRIPT PLAYGROUND</div>
+        <h1>Make the web <span>interactive.</span></h1>
+        <p>Explore the power of JavaScript with three simple experiments: interactive colors, smart greetings, and instant calculations.</p>
+    </header>
+
+    <main class="workspace">
+        <section class="card">
+            <div class="card-top">
+                <div class="icon">🎨</div>
+                <div>
+                    <div class="number">Experiment 01</div>
+                    <h2>Color Switcher</h2>
+                </div>
+            </div>
+            <p class="description">Click the button to change its color. Every click gives it a fresh look.</p>
+            <div class="demo-area">
+                <button class="primary-btn" id="colorButton" type="button">Change my color</button>
+                <p class="status" id="colorStatus" aria-live="polite">Current color: Cyan</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-top">
+                <div class="icon">🌤️</div>
+                <div>
+                    <div class="number">Experiment 02</div>
+                    <h2>Time Greeting</h2>
+                </div>
+            </div>
+            <p class="description">Get a greeting based on your device's current local time.</p>
+            <div class="demo-area">
+                <div class="time-display" id="clock">--:--:--</div>
+                <button class="primary-btn purple-btn" id="greetButton" type="button">Show my greeting</button>
+                <p class="status">Your time, your greeting.</p>
+            </div>
+        </section>
+
+        <section class="card full">
+            <div class="card-top">
+                <div class="icon">🧮</div>
+                <div>
+                    <div class="number">Experiment 03</div>
+                    <h2>Quick Addition Calculator</h2>
+                </div>
+            </div>
+            <p class="description">Enter any two numbers below and let JavaScript calculate their sum.</p>
+            <div class="demo-area">
+                <div class="calculator">
+                    <div class="field">
+                        <label for="firstNumber">First number</label>
+                        <input id="firstNumber" type="number" step="any" placeholder="e.g. 25">
+                    </div>
+                    <div class="plus">+</div>
+                    <div class="field">
+                        <label for="secondNumber">Second number</label>
+                        <input id="secondNumber" type="number" step="any" placeholder="e.g. 17">
+                    </div>
+                </div>
+                <div class="calc-actions">
+                    <button class="primary-btn" id="calculateButton" type="button">Calculate sum ↗</button>
+                    <div class="result" id="result" role="status" aria-live="polite">Your result: <strong>—</strong></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        Built with curiosity and <span>JavaScript</span> · Cognify Internship
+    </footer>
+
+    <script>
+        const colorButton = document.getElementById('colorButton');
+        const colorStatus = document.getElementById('colorStatus');
+
+        const colors = [
+            { name: 'Purple', value: '#a78bfa', text: '#17102b' },
+            { name: 'Coral', value: '#ff8e72', text: '#29110b' },
+            { name: 'Mint', value: '#6ef0bc', text: '#08251a' },
+            { name: 'Pink', value: '#ff85c8', text: '#2b0c20' },
+            { name: 'Blue', value: '#70a5ff', text: '#091a38' },
+            { name: 'Cyan', value: '#55e6ff', text: '#08101c' }
+        ];
+
+        let colorIndex = 0;
+
+        colorButton.addEventListener('click', function () {
+            const color = colors[colorIndex];
+            colorButton.style.backgroundColor = color.value;
+            colorButton.style.color = color.text;
+            colorStatus.textContent = 'Current color: ' + color.name;
+            colorIndex = (colorIndex + 1) % colors.length;
+        });
+
+        const clock = document.getElementById('clock');
+
+        function updateClock() {
+            clock.textContent = new Date().toLocaleTimeString();
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        document.getElementById('greetButton').addEventListener('click', function () {
+            const hour = new Date().getHours();
+            let greeting;
+
+            if (hour >= 5 && hour < 12) {
+                greeting = 'Good morning!';
+            } else if (hour >= 12 && hour < 17) {
+                greeting = 'Good afternoon!';
+            } else if (hour >= 17 && hour < 21) {
+                greeting = 'Good evening!';
+            } else {
+                greeting = 'Good night!';
+            }
+
+            alert(greeting + ' Welcome to Cognify!');
+        });
+
+        document.getElementById('calculateButton').addEventListener('click', function () {
+            const firstInput = document.getElementById('firstNumber');
+            const secondInput = document.getElementById('secondNumber');
+            const result = document.getElementById('result');
+
+            if (firstInput.value.trim() === '' || secondInput.value.trim() === '') {
+                result.innerHTML = 'Please enter <strong>both numbers</strong>.';
+                return;
+            }
+
+            const first = Number(firstInput.value);
+            const second = Number(secondInput.value);
+
+            if (!Number.isFinite(first) || !Number.isFinite(second)) {
+                result.innerHTML = 'Please enter <strong>valid numbers</strong>.';
+                return;
+            }
+
+            const sum = first + second;
+            result.innerHTML = 'Your result: <strong>' + sum + '</strong>';
+        });
+    </script>
+</body>
+</html>
